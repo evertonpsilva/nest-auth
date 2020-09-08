@@ -87,7 +87,6 @@ var LocalStrategy = /** @class */ (function (_super) {
                     case 2:
                         user = _a.sent();
                         if (!user) {
-                            console.log(email, password, user);
                             throw new common_1.UnauthorizedException();
                         }
                         return [2 /*return*/, user];

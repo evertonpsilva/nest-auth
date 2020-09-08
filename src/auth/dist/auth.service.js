@@ -72,7 +72,10 @@ var AuthService = /** @class */ (function () {
                             password = user.password, result = __rest(user, ["password"]);
                             return [2 /*return*/, result];
                         }
-                        return [2 /*return*/, null];
+                        else if (user && user.password != pass) {
+                            throw new common_1.UnauthorizedException('Invalid password');
+                        }
+                        throw new common_1.UnauthorizedException('User not found');
                 }
             });
         });

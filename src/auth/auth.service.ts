@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 
@@ -13,8 +13,10 @@ export class AuthService {
         if(user && user.password === pass){
             const {password, ...result} = user;
             return result;
+        }else if(user && user.password != pass){
+            throw new UnauthorizedException('Invalid password');
         }
-        return null;
+        throw new UnauthorizedException('User not found');
     }
 
     async login(user: any){
