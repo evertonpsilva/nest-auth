@@ -75,7 +75,10 @@ var AuthService = /** @class */ (function () {
                         else if (user && user.password != pass) {
                             throw new common_1.UnauthorizedException('Invalid password');
                         }
-                        throw new common_1.UnauthorizedException('User not found');
+                        else if (!user) {
+                            throw new common_1.UnauthorizedException('User not found');
+                        }
+                        throw new common_1.UnauthorizedException();
                 }
             });
         });

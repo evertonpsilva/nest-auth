@@ -15,8 +15,10 @@ export class AuthService {
             return result;
         }else if(user && user.password != pass){
             throw new UnauthorizedException('Invalid password');
+        }else if(!user){
+            throw new UnauthorizedException('User not found');
         }
-        throw new UnauthorizedException('User not found');
+        throw new UnauthorizedException();
     }
 
     async login(user: any){
